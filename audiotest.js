@@ -34,6 +34,23 @@ var Assert = {
         }
     },
 
+    assertTypedArrayEquals: function(actual, expected, msg) {
+        var length = actual.length;
+        if (length != expected.length) {
+            throw (msg || 'assertTypedArrayEquals failed') +
+                '. Expected length: ' + expected.length + 
+                '; Actual length: ' + length;
+        }
+        for (var i=0; i<length; i++) {
+            if (actual[i] !== expected[i]) {
+                throw (msg || 'assertTypedArrayEquals failed') +
+                    '. Failure at index ' + i +
+                    '; Expected: ' + expected[i] +
+                    '; Actual: ' + actual[i];
+            }
+        }
+    },
+
     assertContinuous: function(array, threshold, msg) {
         threshold = threshold || 0.1;
         var lastValue = null;
