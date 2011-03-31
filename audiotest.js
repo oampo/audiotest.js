@@ -132,4 +132,5 @@ function test(name, test, iterations) {
         print('Test ' + name + ' FAILED');
         print(exception);
     }
+    print('');
 }
