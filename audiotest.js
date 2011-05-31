@@ -101,6 +101,24 @@ var Assert = {
         }
     },
 
+    assertValuesReach: function(array, min, max, msg) {
+        var length = array.length;
+        if (typeof min == 'undefined' || min == null) {
+            min = -0.9;
+        }
+        if (typeof max == 'undefined' || max == null) {
+            max = 0.9;
+        }
+        for (var i=0; i<length; i++) {
+            var value = array[i];
+            if (value < min || value > max) {
+                return;
+            }
+        }
+        throw (msg || 'assertValuesReach failed. ') + ' Expected: value < ' +
+            min + ' || value > ' + max;
+    },
+
     fail: function(msg) {
         throw (msg || 'fail');
     }
